@@ -1,5 +1,6 @@
 import pyautogui
 import sys
+import time
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtCore import Qt
 
@@ -32,6 +33,7 @@ class App(QWidget):
         pyautogui.click(1542, 778)
         pyautogui.click(1542, 855)
         pyautogui.click(1542, 940)
+        time.sleep(2.5)
         pyautogui.click(1420, 261)
         pyautogui.click(1420, 341)
         pyautogui.click(1420, 413)
