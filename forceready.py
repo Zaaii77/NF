@@ -1,44 +1,28 @@
 import pyautogui
 import sys
 import time
-from PIL import ImageGrab
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtCore import Qt
 
-pixel_x, pixel_y = 170, 66
-target_color = (4, 81, 104) 
-
-def get_pixel_color(x, y):
-    screen = ImageGrab.grab()
-    return screen.getpixel((x, y))
-
-def check_and_click():
-    while True:
-        current_color = get_pixel_color(pixel_x, pixel_y)
-
-        if current_color == target_color:
-            # Cliquer à la position spécifiée
-            pyautogui.click(pixel_x, pixel_y)
-            print(f"Clicked at ({pixel_x}, {pixel_y})")
-
-        time.sleep(2)
-
-
 class App(QWidget):
 
+    def __init__(self):
+        super().__init__()
+        self.initUI()
+
     def initUI(self):
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)  # Garde la fenêtre toujours en avant-plan et sans bordure
+        self.setGeometry(20, 490, 60, 60)  # Positionne la fenêtre à 20x490 avec une taille de 60x60
 
         button = QPushButton("Cliquez-moi !", self)
         button.clicked.connect(self.button_click)
         button.setStyleSheet("border: 0px;")
         button.setFixedSize(60, 60)
-        button.move(0, 0)
+        button.move(0, 0)  # Positionne le bouton à l'intérieur de la fenêtre
         self.show()
-        check_and_click()
 
     def button_click(self):
-        
+        # Fonction à exécuter lorsque le bouton est cliqué
         pyautogui.click(1542, 257)
         pyautogui.click(1542, 339)
         pyautogui.click(1542, 410)
@@ -49,8 +33,8 @@ class App(QWidget):
         pyautogui.click(1542, 778)
         pyautogui.click(1542, 855)
         pyautogui.click(1542, 940)
-        pyautogui.click(1420, 261)
         time.sleep(2.5)
+        pyautogui.click(1420, 261)
         pyautogui.click(1420, 341)
         pyautogui.click(1420, 413)
         pyautogui.click(1420, 486)
